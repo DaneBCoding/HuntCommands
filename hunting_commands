@@ -1,3 +1,12 @@
+Profiling http covert C2
+1-Broken referrers
+-Mismatching user-agents
+1-bracketable beaconing times
+1-large number of reqs with static responses
+-high entropy in post data
+-mis-matched cookies
+-different reqs give same resp.
+
 Profile DMZ
 cat http.log | bro-cut id.resp_h | sort | uniq -c
 cat http.log | sort | grep IP(anything suspicious. single hits. high hits)
