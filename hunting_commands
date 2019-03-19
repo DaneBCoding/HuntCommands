@@ -62,3 +62,5 @@ urlencoded-form.value
 tshark -nr cix.pcap -Y 'http.requests.method ==POST && ip.addr==ip" -T fields -e data
 tshark -nr cix.pcap -Y 'http && ip.addr==ip" -T fields -e ip.src -e http.cookie -e http.set_cookie | sort -u
 
+trim to timeframe
+editcap -F libpcap -A "2013-07-20 23:00:00" -B "2013-07-20 23:20:00" input.pcap output.pcap
