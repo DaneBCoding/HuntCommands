@@ -16,9 +16,7 @@ if local.. why is it doin that. if remote, who made the call to it and why?
 cat ssh.log | bro-cut id.orig_h id.resp_h | sort | uniq -c
 cat ssh.log | bro-cut id.orig_h id.resp_h auth_success | sort | uniq -c
 
-cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk '$==22{print}' | sort | grep 
-
-"5\.8.49\.6"
+cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk '$==22{print}' | sort | grep "5\.8.49\.6"
 grep where port is 22
 
 cat conn.log | bro-cut ts id.orig_h id.resp_h method uri host user_agent referrer | grep POST
