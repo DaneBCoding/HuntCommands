@@ -7,6 +7,8 @@ Profiling http covert C2
 -mis-matched cookies
 -different reqs give same resp.
 
+capinfos blah.pcap
+
 Profile DMZ
 cat http.log | bro-cut id.resp_h | sort | uniq -c
 cat http.log | sort | grep IP(anything suspicious. single hits. high hits)
