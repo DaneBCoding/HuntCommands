@@ -1,0 +1,55 @@
+Profile DMZ
+cat http.log | bro-cut id.resp_h | sort | uniq -c
+cat http.log | sort | grep IP(anything suspicious. single hits. high hits)
+if local.. why is it doin that. if remote, who made the call to it and why?
+cat ssh.log | bro-cut id.orig_h id.resp_h | sort | uniq -c
+cat ssh.log | bro-cut id.orig_h id.resp_h auth_success | sort | uniq -c
+
+cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk '$==22{print}' | sort | grep 
+
+"5\.8.49\.6"
+grep where port is 22
+
+cat conn.log | bro-cut ts id.orig_h id.resp_h method uri host user_agent referrer | grep POST
+
+cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk %4==22{print}'|sort|uniq -c -f 
+
+1 | awk '%6!=0{print}'|sort|uniq -f 2
+verifying if successfull or not. 
+
+dns hunter turns up findfaith.org and imrworldwide in external dns
+cat http.log | bro-cut id.orig_h id.resp_h id.resp_p | sort| uniq-c | sort -n | awk'$1>100'
+cat http.log | bro-cut id.orig_h id.resp_h id.resp_p host method uri user_agent| sort| uniq-c | sort -n | 
+
+awk'$1>1'
+cat http.log | bro-cut id.orig_h id.resp_h id.resp_p host method uri user_agent| sort| uniq-c | sort -n | 
+
+awk'$1>10'
+cat http.log | bro-cut id.orig_h id.resp_h id.resp_p host method uri user_agent| sort| uniq-c | sort -n | 
+
+awk'$1>100'
+
+cat http.log | bro-cut id.orig_h id.resp_h id.resp_p host method request_body_len response_body_len | sort | uniq 
+
+-c | sort -n | awk '$1>100'
+
+
+block2
+cat http.log | bro-cut id.orig_h id.resp_h host method uri user_agent | awk '{if($3=="-")print}' | grep 
+
+"Mozilla/5.0 (user agent)"
+
+cat http.log | bro-cut -d ts id.orig_h id.resp_h host method user_agent | awk '{if($4=="-")print}" | grep "user 
+
+agent"
+BITS user agent to see tools being downloaded.
+
+cat http.log | bro-cut id.orig_h id.resp_h method uri host | sort | uniq -c | sort -n | awk '$1>50{print}'
+
+tshark -nr cix_halifax_block2.pcap -Y "http.request.method==POST && ip.addr==ip" -T fieldsurlencoded-form.key -e 
+
+urlencoded-form.value
+
+tshark -nr cix.pcap -Y 'http.requests.method ==POST && ip.addr==ip" -T fields -e data
+tshark -nr cix.pcap -Y 'http && ip.addr==ip" -T fields -e ip.src -e http.cookie -e http.set_cookie | sort -u
+
