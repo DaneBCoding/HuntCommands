@@ -1,0 +1,37 @@
+                    It has been determined that a workstation in your organization, the foregin ammunition and knife exchange, has fallen victim to a ransomware attack.  The responder is tasked with conducting a forensic analysis of the incident to determine the method and scope of infection and the time of events. To aid the investigatation, we have prepared an archive of files suspected to contain evidence of the compromise.  This archive contains packet captures from the corpoarate edge router, event logs from the servers and workstations, file listings and registry hives.
+
+Your corporate domain, FAKE.CA, consists of two seperate networks. - one for the servers and one for the workstations. An administrator from a managed service provider occasionally accesses the network remotely via the Terminal Server, TS1, to perform maintenance and other IT administration tasks. Employees access their corporate email via the on-premises Exchange server, EX1, using both the Outlook desktop client and the outlook web access client. The corporate file share is hosted on FS1. The diagram below shows the corporate network layout.
+
+network got ransom wared. not sure how or why
+
+how they got in?
+
+and what they did once they got in?
+
+sysmon not deployed beforehand. 
+
+csv files with a disk listing of files. timestamps and hashes.
+have registry hives from the machines
+all the windows logs from different machines
+between kali, mint analyst, and windows analyst machines. will be able to process all this data in a variety of ways.
+
+sans incident response cheat sheet is your friend. know what you want, it'll show where to find it.
+
+TS = terminal server. dnd hired contractor to do remote admin. contractors based in the US. seeing people log into it could be legit.
+
+DC1, TS1, EX1, FS1 = 10.13.37.0/24
+router/firewall
+
+
+RDP brute forcing by 2 IPs
+Verify if successfull by conn.log orig_bytes orig_packets resp_bytes resp_packets
+response > 1299 = success
+establish timeline. 
+*check out bound on servers successfully logged into (TS)
+pulldown multiple files via port 58008. 
+ - cfmon.bat
+ - lsass.exe etc.
+using event logs. rx the hashes to compare with legit copies. 
+stickeykeys/registry for persistence.
+
+
