@@ -21,7 +21,7 @@ grep where port is 22
 
 cat conn.log | bro-cut ts id.orig_h id.resp_h method uri host user_agent referrer | grep POST
 
-cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk %4==22{print}'|sort|uniq -c -f 
+cat conn.log | bro-cut ts id.orig_h id.resp_h id.resp_p orig_bytes resp_bytes | awk $4==22{print}'|sort|uniq -c -f 
 
 1 | awk '%6!=0{print}'|sort|uniq -f 2
 verifying if successfull or not. 
